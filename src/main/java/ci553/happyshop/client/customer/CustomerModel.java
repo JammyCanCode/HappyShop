@@ -1,6 +1,7 @@
 package ci553.happyshop.client.customer;
 
 import ci553.happyshop.catalogue.Order;
+import ci553.happyshop.catalogue.OrganisedTrolley;
 import ci553.happyshop.catalogue.Product;
 import ci553.happyshop.catalogue.Trolley;
 import ci553.happyshop.storageAccess.DatabaseRW;
@@ -22,7 +23,8 @@ public class CustomerModel {
                                   //Benefits: Flexibility: Easily change the database implementation.
 
     private Product searchResult =null; // product found from search
-    private Trolley trolley =  new Trolley(); // holds the products currently in the customer's trolley
+    private Trolley trolley =  new OrganisedTrolley(); // holds the products currently in the customer's trolley **Updated to
+    // use OrganisedTrolley rather than the original class
 
     // Data passed to CustomerView for UI updates (including search, trolley and receipt page)
     private String searchResultImageName = "imageHolder.jpg";
