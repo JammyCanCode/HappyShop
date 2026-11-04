@@ -1,6 +1,7 @@
 package ci553.happyshop.client.customer;
 
 import ci553.happyshop.utility.UIStyle;
+import ci553.happyshop.SoundEffects.SoundEffect;
 import ci553.happyshop.utility.WinPosManager;
 import ci553.happyshop.utility.WindowBounds;
 import javafx.event.ActionEvent;
@@ -14,6 +15,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
+
 
 /**
  * The CustomerView is separated into two sections by a line :
@@ -44,6 +46,7 @@ public class CustomerView  {
     private Label lbProductText;//product text info in searchPage
     private TextArea taTrolley; //in trolley Page
     private TextArea taReceipt;//in receipt page
+    private SoundEffect soundEffect;
 
     // Holds a reference to this CustomerView window for future access and management
     // (e.g., positioning the removeProductNotifier when needed).
@@ -180,6 +183,7 @@ public class CustomerView  {
         if(action.equals("OK & Close")){
             showTrolleyOrReceiptPage(vbTrolleyPage);
         }
+        SoundEffect.playMedia();
         cusController.doAction(action);
     }
 
