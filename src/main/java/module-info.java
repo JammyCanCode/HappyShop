@@ -17,6 +17,8 @@ module ci553.happyshop {
     opens ci553.happyshop.client.orderDashboard;
     opens ci553.happyshop.client.warehouse;
     opens ci553.happyshop.client.emergency;
+    opens ci553.happyshop.SoundEffects;
+    opens ci553.happyshop.clientLogin;
 
     exports ci553.happyshop;
     exports ci553.happyshop.client;
@@ -25,4 +27,6 @@ module ci553.happyshop {
     exports ci553.happyshop.client.orderDashboard;
     exports ci553.happyshop.client.emergency;
     exports ci553.happyshop.systemSetup;
+    exports ci553.happyshop.SoundEffects;
+    exports ci553.happyshop.clientLogin;
 }
