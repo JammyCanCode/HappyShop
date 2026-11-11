@@ -35,6 +35,9 @@ public final class UIStyle {
     }
 
     //size of all UI windows
+    public static final int LoginWinWidth = 305 ;
+    public static final int LoginWinHeight = 250 ;
+
     public static final int customerWinWidth = 610;
     public static final int customerWinHeight = 300;
     public static final int removeProNotifierWinWidth = customerWinWidth / 2 + 160;
@@ -86,6 +89,7 @@ public final class UIStyle {
     //TextField styles
     public static final String textFieldStyle = "-fx-font-size: 16";
     public static final String customerTextFieldStyle = "-fx-font-size: 14px; -fx-pref-width: 175px;";
+    public static final String LoginTextFieldStyle = "-fx-font-size: 14px; -fx-pref-width: 175px;";
     public static final String warehouseProductFormTextFieldStyle = "-fx-font-size: 14px; -fx-pref-width: 80px;";
     public static final String smallTextFieldStyle = "-fx-font-size: 14";
     public static final String tinyTextFieldStyle = "-fx-font-size: 12";

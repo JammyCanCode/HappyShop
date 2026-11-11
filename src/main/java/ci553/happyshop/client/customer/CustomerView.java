@@ -183,6 +183,7 @@ public class CustomerView  {
         if(action.equals("OK & Close")){
             showTrolleyOrReceiptPage(vbTrolleyPage);
         }
+        // Added SoundEffect.playMedia() to allow a click sound to be played each time a button is clicked.
         SoundEffect.playMedia();
         cusController.doAction(action);
     }

@@ -1,5 +1,6 @@
 package ci553.happyshop.clientLogin;
 
+import ci553.happyshop.SoundEffects.SoundEffect;
 import ci553.happyshop.utility.UIStyle;
 import ci553.happyshop.utility.WinPosManager;
 import javafx.event.ActionEvent;
@@ -16,8 +17,8 @@ public class LoginView {
     public LoginController logController;
 
     public String title = "Login Client";
-    private final int WIDTH = UIStyle.customerWinWidth;
-    private final int HEIGHT = UIStyle.customerWinHeight;
+    private final int WIDTH = UIStyle.LoginWinWidth;
+    private final int HEIGHT = UIStyle.LoginWinHeight;
     private final int COLUMN_WIDTH = WIDTH / 2 - 10;
 
     TextField tfUsername; //User input for Username + Password.
@@ -44,10 +45,10 @@ public class LoginView {
         //User input text fields + styling.
         tfUsername = new TextField();
         tfUsername.setPromptText("e.g Username");
-        tfUsername.setStyle(UIStyle.customerTextFieldStyle);
+        tfUsername.setStyle(UIStyle.LoginTextFieldStyle);
         pfPassword = new PasswordField();
         pfPassword.setPromptText("e.g Password");
-        pfPassword.setStyle(UIStyle.customerTextFieldStyle);
+        pfPassword.setStyle(UIStyle.LoginTextFieldStyle);
 
         Button btnLogin = new Button("Login");
         btnLogin.setStyle(UIStyle.buttonStyle);
@@ -64,6 +65,7 @@ public class LoginView {
     private void buttonClicked(ActionEvent event) {
         Button btnLogin = (Button) event.getSource();
         String  action = btnLogin.getText();
+        SoundEffect.playMedia();
         logController.doAction(action);
     }
 

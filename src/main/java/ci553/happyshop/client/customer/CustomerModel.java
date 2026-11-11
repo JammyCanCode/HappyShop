@@ -50,7 +50,9 @@ public class CustomerModel {
     //SELECT productID, description, image, unitPrice,inStock quantity
     void search() {
         String productId = cusView.tfId.getText().trim();
-        if (!productId.isEmpty()) {
+        String keyword = cusView.tfKeyword.getText().trim(); //TODO: Implement Keyword search
+
+        if (!productId.isEmpty() || !keyword.isEmpty()) {
             searchResult = databaseRW.searchProductById(productId); //search database
             if (searchResult != null && searchResult.getStockQuantity() > 0) {
                 double unitPrice = searchResult.getUnitPrice();
@@ -77,8 +79,9 @@ public class CustomerModel {
     void addToTrolley() {
         if (searchResult != null) {
             // Add the selected product to the trolley.
-            // Currently this simply appends the product to the end of the list.
-            // TODO: Improve the organisation of the trolley (see class Trolley).
+            // Merging and sorting is handled by OrganisedTrolley and any additional
+            // additions to the list are merged into any existing orders e.g. 0001 becomes
+            // 0001 [2].
             trolley.addProduct(searchResult);
             // Build a formatted string so the trolley contents can be displayed in the UI
             trolleyContentsText = ProductListFormatter.buildString(trolley.getProducts());
@@ -148,21 +151,21 @@ public class CustomerModel {
      * Groups products by their productId to optimize database queries and updates.
      * By grouping products, we can check the stock for a given `productId` once, rather than repeatedly
      */
-    private ArrayList<Product> groupProductsById(ArrayList<Product> proList) {
-        Map<String, Product> grouped = new HashMap<>();
-        for (Product p : proList) {
-            String id = p.getProductId();
-            if (grouped.containsKey(id)) {
-                Product existing = grouped.get(id);
-                existing.setOrderedQuantity(existing.getOrderedQuantity() + p.getOrderedQuantity());
-            } else {
-                // Make a shallow copy to avoid modifying the original
-                grouped.put(id, new Product(p.getProductId(), p.getProductDescription(),
-                        p.getProductImageName(), p.getUnitPrice(), p.getOrderedQuantity(), p.getStockQuantity()));
-            }
-        }
-        return new ArrayList<>(grouped.values());
-    }
+//    private ArrayList<Product> groupProductsById(ArrayList<Product> proList) {
+//        Map<String, Product> grouped = new HashMap<>();
+//        for (Product p : proList) {
+//            String id = p.getProductId();
+//            if (grouped.containsKey(id)) {
+//                Product existing = grouped.get(id);
+//                existing.setOrderedQuantity(existing.getOrderedQuantity() + p.getOrderedQuantity());
+//            } else {
+//                // Make a shallow copy to avoid modifying the original
+//                grouped.put(id, new Product(p.getProductId(), p.getProductDescription(),
+//                        p.getProductImageName(), p.getUnitPrice(), p.getOrderedQuantity(), p.getStockQuantity()));
+//            }
+//        }
+//        return new ArrayList<>(grouped.values());
+//    }
 
     void cancel() {
 
